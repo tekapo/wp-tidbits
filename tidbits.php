@@ -9,7 +9,7 @@
  */
 
 /**
- * ツールバーにテンプレートファイルを表示
+ * show template file name on the tool bar.
  *
  */
 new Show_Template_File_Name();
@@ -26,19 +26,20 @@ class Show_Template_File_Name {
 
 	public function show_template_file_name_on_top( $wp_admin_bar ) {
 
-		if ( !is_admin() and is_super_admin() ) {
-			global $template;
-			$template = basename( $template );
+		if ( is_admin() or !is_super_admin() )
+			return;
+
+		global $template;
+		$template = basename( $template );
 //	$template = str_replace( ABSPATH, '', $template );
 
-			global $wp_admin_bar;
-			$args = array(
-				'id'	 => 'show_template_file_name_on_top',
-				'title'	 => 'Template: ' . $template,
-			);
+		global $wp_admin_bar;
+		$args = array(
+			'id'	 => 'show_template_file_name_on_top',
+			'title'	 => 'Template: ' . $template,
+		);
 
-			$wp_admin_bar->add_node( $args );
-		}
+		$wp_admin_bar->add_node( $args );
 	}
 
 }

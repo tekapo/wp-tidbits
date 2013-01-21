@@ -1,0 +1,14 @@
+/* 
+    Document   : style.css
+    Created on : 2013/01/21, 16:04:46
+    Author     : tai
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#wpadminbar .hover .show-template-name { 
+	font-family: monospace;
+	text-shadow: none;
+	color: #333;
+}
+

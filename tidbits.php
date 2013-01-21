@@ -28,13 +28,13 @@ class Show_Template_File_Name {
 
 		global $template;
 
-		$template_file_name = basename( $template );
-		$template_relative_path = str_replace( ABSPATH, '', $template );
+		$template_file_name		 = basename( $template );
+		$template_relative_path	 = str_replace( ABSPATH, '', $template );
 
 		global $wp_admin_bar;
 		$args = array(
 			'id'	 => 'show_template_file_name_on_top',
-			'title'	 => 'Template:<span class="show-template-name"> ' . $template_file_name. '</span>',
+			'title'	 => 'Template:<span class="show-template-name"> ' . $template_file_name . '</span>',
 		);
 
 		$wp_admin_bar->add_node( $args );
@@ -42,7 +42,7 @@ class Show_Template_File_Name {
 		$wp_admin_bar->add_menu( array(
 			'parent' => 'show_template_file_name_on_top',
 			'id'	 => 'template_relative_path',
-			'title'	 => 'Relative path:<span class="show-template-name"> ' . $template_relative_path. '</span>',
+			'title'	 => 'Relative path:<span class="show-template-name"> ' . $template_relative_path . '</span>',
 		) );
 
 		$wp_admin_bar->add_menu( array(
@@ -53,7 +53,10 @@ class Show_Template_File_Name {
 	}
 
 	public function add_tidbits_stylesheet() {
-		// Respects SSL, Style.css is relative to the current file
+
+		if ( is_admin() or ! is_super_admin() )
+			return;
+
 		wp_register_style( 'tidbits-style', plugins_url( 'style.css', __FILE__ ) );
 		wp_enqueue_style( 'tidbits-style' );
 	}

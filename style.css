@@ -6,8 +6,11 @@
         Purpose of the stylesheet follows.
 */
 
-#wpadminbar .hover .show-template-name { 
+#wpadminbar .show-template-name { 
 	font-family: monospace;
+}
+
+#wpadminbar .hover .show-template-name { 
 	text-shadow: none;
 	color: #333;
 }
